@@ -1,2 +1,2 @@
 # vivo-tools
-Usefull tools for installing and configuring VIVO
+Useful tools for installing and configuring VIVO
