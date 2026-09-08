@@ -9,7 +9,7 @@ vivoSolrBranch="solr-8.11"
 versionUrl="https://archive.apache.org/dist/lucene/solr"
 version=$(
   curl -fsSL "$versionUrl/" |
-    sed -nE 's#.*href="(8\.[0-9]+(\.[0-9]+)?)/".*#\1#p' |
+    sed -nE 's#.*href="(8\.11\.[0-9]+)/?".*#\1#p' |
     sort -V |
     tail -n 1
 )
