@@ -4,10 +4,10 @@ sudo echo "$(basename "$0")"
 
 tomcatDir="/opt/tomcat"
 
-# determine latest Tomcat version
-tomcat_url='https://dlcdn.apache.org/tomcat/tomcat-9'
+# determine latest version
+versionUrl='https://dlcdn.apache.org/tomcat/tomcat-9'
 version=$(
-  curl --fail --silent --show-error --location "$tomcat_url/" |
+  curl --fail --silent --show-error --location "$versionUrl/" |
   grep -oE 'href="v9\.0\.[0-9]+/"' |
   sed -E 's/.*v(9\.0\.[0-9]+)\/".*/\1/' |
   sort -V |

@@ -2,9 +2,22 @@
 set -x #echo on
 sudo echo "$(basename "$0")"
 
-version="8.11.1"
 solrDir="/opt/solr"
 vivoSolrBranch="solr-8.11"
+
+# determine latest version
+versionUrl="https://archive.apache.org/dist/lucene/solr"
+version=$(
+  curl -fsSL "$versionUrl/" |
+    sed -nE 's#.*href="(8\.[0-9]+(\.[0-9]+)?)/".*#\1#p' |
+    sort -V |
+    tail -n 1
+)
+
+if [ -z "$version" ]; then
+  echo "No downloadable version found" >&2
+  exit 1
+fi
 
 sudo mkdir $solrDir
 sudo chown tomcat:tomcat $solrDir
